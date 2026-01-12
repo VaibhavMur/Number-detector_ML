@@ -15,3 +15,9 @@ model.add(tf.keras.layers.Flatten(input_shape = (28, 28))) # Flattening the 2D i
 model.add(tf.keras.layers.Dense(128, activation = 'relu')) # First hidden layer with ReLU activation. RELU stands for Rectified Linear Unit
 model.add(tf.keras.layers.Dense(128, activation = 'relu')) # Second hidden layer with ReLU activation. RELU stands for Rectified Linear Unit
 model.add(tf.keras.layers.Dense(10, activation = 'softmax')) # Output layer with Softmax activation. Softmax makes sure the outputs add up to 1, so they can be interpreted as probabilities/confidence
+
+model.compile(optimizer = 'adam', loss = 'sparse_categorical_crossentropy', metrics = ['accuracy'])
+
+model.fit(x_train, y_train, epochs = 10) # Training the model for 10 epochs
+
+model.save('handwritten_model.keras') # Saving the model
