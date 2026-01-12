@@ -11,3 +11,5 @@ img = np.expand_dims(img, axis=0)
 
 prediction = model.predict(img)
 print (f"Number: {np.argmax(prediction)}")
+
+# Test Commit
