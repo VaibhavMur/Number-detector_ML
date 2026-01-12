@@ -18,6 +18,6 @@ model.add(tf.keras.layers.Dense(10, activation = 'softmax')) # Output layer with
 
 model.compile(optimizer = 'adam', loss = 'sparse_categorical_crossentropy', metrics = ['accuracy'])
 
-model.fit(x_train, y_train, epochs = 10) # Training the model for 10 epochs
+model.fit(x_train, y_train, epochs = 50) # Training the model for 50 epochs
 
 model.save('handwritten_model.keras') # Saving the model
