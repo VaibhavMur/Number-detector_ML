@@ -49,6 +49,27 @@ window.addEventListener("load", () => {
 
   function predictNumber() {
     document.getElementById("result").innerText = "Predicting...";
+
+    const dataURL = canvas.toDataURL("image/png");
+
+    fetch("http://127.0.0.1:5000/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ image: dataURL })
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById("result").innerText = "Error";
+    })
+    .then(res => res.json())
+    .then(data => {
+      setTimeout(() => {
+        console.log(data.prediction);
+        document.getElementById("result").innerText = data.prediction;
+      },0);
+    })
   }
 
 
